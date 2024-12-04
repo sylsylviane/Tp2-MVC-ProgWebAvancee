@@ -26,9 +26,11 @@ class FilmController
     {
         if (isset($data['id']) && $data['id'] != null) {
             $film = new Film;
-            $selectId = $film->selectId($data['id']);
-            if ($selectId) {
-                return View::render('film/show', ['film' => $selectId]);
+            $films = $film->selectId($data['id']);
+            $genre = new Genre;
+            $genres = $genre->select('nom');
+            if ($films) {
+                return View::render('film/show', ['film' => $films, 'genres' => $genres]);
             } else {
                 return View::render('error');
             }
