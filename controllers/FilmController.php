@@ -62,9 +62,9 @@ class FilmController
         }else {
             $errors = $validator->getErrors();
             $genre = new Genre;
-            $select = genre->select('nom');
+            $select = $genre->select('nom');
 
-            return View::rendre('film/create', ['errors' => $errors, 'inputs' => $data, 'genres' => $select]);  
+            return View::render('film/create', ['errors' => $errors, 'inputs' => $data, 'genres' => $select]);  
         }
     }
 
