@@ -12,9 +12,11 @@ class FilmController
     public function index()
     {
         $film = new Film;
-        $select = $film->select('titre');
-        if ($select) {
-            return View::render('film/index', ['films' => $select]);
+        $films = $film->select('titre');
+        $genre = new Genre;
+        $genres = $genre->select('nom');
+        if ($films) {
+            return View::render('film/index', ['films' => $films, 'genres' => $genres]);
         } else {
             return View::render('error');
         }
@@ -37,8 +39,12 @@ class FilmController
     public function create()
     {
         $genre = new Genre;
-        $select = $genre->select('nom');
-        View::render('film/create', ['genres' => $select]);
+        $genres = $genre->select('nom');
+        echo "<pre>";
+        print_r($genres);
+        echo "</pre>";
+
+        // View::render('film/create', ['genres' => $genres]);
     }
 
     public function store($data = [])
