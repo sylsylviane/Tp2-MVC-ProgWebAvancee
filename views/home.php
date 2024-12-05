@@ -1,31 +1,37 @@
 {{ include('layouts/header.php', {title: 'Dashboard'}) }}
 
 <h1>Tableau de bord</h1>
-
-<section class="stats">
-    <header>
-        <h2>Statistiques</h2>
-    </header>
-    <div>
-        <article class="widget">
-            <h2>Nombre Total D'utilisateurs</h2>
-            <p>{{ data.totalUsers }}</p>
-        </article>
-        <article class="widget">
-            <h2>Sessions Active</h2>
-            <p>{{ data.activeSessions }}</p>
-        </article>
-
-        <article class="widget">
-            <h2>Nouveaux Messages</h2>
-            <p>{{ data.newMessages }}</p>
-        </article>
-
-        <article class="widget">
-            <h2>Tâches En Attente</h2>
-            <p>{{ data.pendingTasks }}</p>
-        </article>
-    </div>
+<h2>Nouveaux Films</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Titre</th>
+        <th>Synopsis</th>
+        <th>Date de sortie</th>
+        <th>Durée</th>
+        <th>Genre</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for film in films %}
+    <tr>
+        <td><a href="{{base}}/film/show?id={{film.id}}">{{film.titre}}</a></td>
+        <td>{{film.synopsis}}</td>
+        <td>{{film.date_sortie}}</td>
+        <td>{{film.duree}}</td>
+        <td>
+            {% for genre in genres %}
+                {% if genre.id == film.genre_id %}
+                    {{genre.nom}}
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<br><br>
+<a href="{{base}}/film" class="btn">Voir tous les films</a>
 </section>
 
 {{ include('layouts/footer.php') }}
