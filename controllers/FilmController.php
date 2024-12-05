@@ -42,49 +42,48 @@ class FilmController
     {
         $genre = new Genre;
         $genres = $genre->select('nom');
-        echo "<pre>";
-        print_r($genres);
-        echo "</pre>";
-
-        // View::render('film/create', ['genres' => $genres]);
+        View::render('film/create', ['genres' => $genres]);
     }
 
-    public function store($data = [])
+    public function store($data)
     {
         $validator = new Validator;
         $validator->field('titre', $data['titre'])->min(2)->max(45);
         $validator->field('synopsis', $data['synopsis']);
         $validator->field('date_sortie', $data['date_sortie'], 'Date de sortie')->validateDate($format = 'Y-m-d');
         $validator->field('duree', $data['duree'])->max(20);
-        $validator->field('Genre_id', $data['Genre_id'], 'Genre')->required();
+        $validator->field('genre_id', $data['genre_id'], 'Genre')->required();
 
-        if($validator->isSuccess()){
+        if ($validator->isSuccess()) {
+
             $film = new Film;
             $insert = $film->insert($data);
-
+            print_r($insert);
+            die();
             if ($insert) {
                 return View::redirect('film');
             } else {
                 return View::render('error');
             }
-        }else {
+        } else {
             $errors = $validator->getErrors();
             $genre = new Genre;
-            $select = $genre->select('nom');
+            $genres = $genre->select('nom');
 
-            return View::render('film/create', ['errors' => $errors, 'inputs' => $data, 'genres' => $select]);  
+            return View::render('film/create', ['errors' => $errors, 'inputs' => $data, 'genres' => $genres]);
         }
     }
 
-    public function edit($get = [])
+    public function edit($data = [])
     {
-        if (isset($get['id']) && $get['id'] != null) {
+        if (isset($data['id']) && $data['id'] != null) {
             $film = new Film;
-            $selectId = $film->selectId($get['id']);
-            if ($selectId) {
+            $films = $film->selectId($data['id']);
+
+            if ($films) {
                 $genre = new Genre;
-                $select = $genre->select('nom');
-                return View::render('film/edit', ['genres' => $select, 'inputs' => $selectId]);
+                $genres = $genre->select('nom');
+                return View::render('film/edit', ['genres' => $genres, 'inputs' => $films]);
             } else {
                 return View::render('error');
             }
@@ -96,11 +95,11 @@ class FilmController
     {
         if (isset($get['id']) && $get['id'] != null) {
             $validator = new Validator;
-            $validator->field('titre', $data['titre'])->min(2)->max(45);
+            $validator->field('titre', $data['titre'], 'Le titre')->min(2)->max(45);
             $validator->field('synopsis', $data['synopsis']);
             $validator->field('date_sortie', $data['date_sortie'], 'Date de sortie')->validateDate($format = 'Y-m-d');
             $validator->field('duree', $data['duree'])->max(20);
-            $validator->field('Genre_id', $data['Genre_id'], 'Genre')->required();
+            $validator->field('genre_id', $data['genre_id'], 'Genre')->required();
 
             if ($validator->isSuccess()) {
                 $film = new Film;
@@ -112,19 +111,20 @@ class FilmController
                 }
             } else {
                 $genre = new Genre;
-                $select = $genre->select('nom');
+                $genres = $genre->select('nom');
                 $errors = $validator->getErrors();
                 $inputs = $data;
-                return View::render('film/edit', ['errors' => $errors, 'inputs' => $inputs, 'genres' => $select]);
+                return View::render('film/edit', ['errors' => $errors, 'inputs' => $inputs, 'genres' => $genres]);
             }
         }
         return View::render('error');
     }
 
-    public function delete($data = [])
+    public function delete($data)
     {
         $film = new Film;
         $delete = $film->delete($data['id']);
+
         if ($delete) {
             return View::redirect('film');
         }
