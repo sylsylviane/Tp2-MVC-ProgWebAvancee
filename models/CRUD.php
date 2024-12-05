@@ -21,6 +21,7 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
+    
     final public function selectId($value)
     {
         $sql = "SELECT * FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
@@ -34,6 +35,7 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
+
     final public function insert($data)
     {
         $data_keys = array_fill_keys($this->fillable, '');
@@ -76,6 +78,7 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
+
     final public function delete($id)
     {
         if ($this->selectId($id)) {
@@ -87,6 +90,16 @@ abstract class CRUD extends \PDO
             } else {
                 return false;
             }
+        } else {
+            return false;
+        }
+    }
+
+    final function getFiveNewest()
+    {
+        $sql = "SELECT * FROM $this->table order by id DESC LIMIT 5";
+        if ($stmt = $this->query($sql)) {
+            return $stmt->fetchAll();
         } else {
             return false;
         }
