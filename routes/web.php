@@ -7,6 +7,7 @@ Route::get('/film/show', 'FilmController@show');
 Route::get('/film/create', 'FilmController@create');
 Route::post('/film/create', 'FilmController@store');
 Route::get('/film/edit', 'FilmController@edit');
+Route::post('/film/edit', 'FilmController@update');
 Route::post('/film/delete', 'FilmController@delete');
 
 Route::dispatch();
