@@ -5,7 +5,7 @@
     <p><strong>Titre: </strong>{{ film.titre }}</p>
     <p><strong>Genre: </strong>
         {% for genre in genres %}
-        {% if genre.id == film.Genre_id %}
+        {% if genre.id == film.genre_id %}
         {{genre.nom}}
         {% endif %}
         {% endfor %}
@@ -15,7 +15,7 @@
     <p><strong>Durée: </strong>{{ film.duree }}</p>
     <a href="{{ base }}/film/edit?id={{film.id}}" class="btn block">Edit</a>
     <form action="{{ base }}/film/delete" method="post">
-        <input type="hidden" titre="id" value="{{ film.id }}">
+        <input type="hidden" name="id" value="{{ film.id }}">
         <button type="submit" class="btn block red">Delete</button>
     </form>
 </div>
