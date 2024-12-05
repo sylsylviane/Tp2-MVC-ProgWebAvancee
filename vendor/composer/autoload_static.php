@@ -30,6 +30,9 @@ class ComposerStaticInitd751713988987e9331980363e24189ce
         ),
         'A' => 
         array (
+            'App\\Routes\\' => 11,
+            'App\\Providers\\' => 14,
+            'App\\Models\\' => 11,
             'App\\Controllers\\' => 16,
         ),
     );
@@ -50,6 +53,18 @@ class ComposerStaticInitd751713988987e9331980363e24189ce
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'App\\Routes\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/routes',
+        ),
+        'App\\Providers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/providers',
+        ),
+        'App\\Models\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/models',
         ),
         'App\\Controllers\\' => 
         array (
