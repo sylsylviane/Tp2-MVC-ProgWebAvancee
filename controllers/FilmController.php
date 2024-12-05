@@ -8,7 +8,18 @@ use App\Models\Genre;
 use App\Providers\Validator;
 
 class FilmController
-{
+{ 
+    public function indexHome(){
+        $film = new Film;
+        $films = $film->getFiveNewest('titre');
+        $genre = new Genre;
+        $genres = $genre->select('nom');
+        if ($films) {
+            return View::render('home', ['films' => $films, 'genres' => $genres]);
+        } else {
+            return View::render('error');
+        }
+    }
     public function index()
     {
         $film = new Film;
@@ -48,7 +59,7 @@ class FilmController
     public function store($data)
     {
         $validator = new Validator;
-        $validator->field('titre', $data['titre'])->min(2)->max(45);
+        $validator->field('titre', $data['titre'])->min(2)->max(100);
         $validator->field('synopsis', $data['synopsis']);
         $validator->field('date_sortie', $data['date_sortie'], 'Date de sortie')->validateDate($format = 'Y-m-d');
         $validator->field('duree', $data['duree'])->max(20);
@@ -58,8 +69,6 @@ class FilmController
 
             $film = new Film;
             $insert = $film->insert($data);
-            print_r($insert);
-            die();
             if ($insert) {
                 return View::redirect('film');
             } else {
@@ -95,7 +104,7 @@ class FilmController
     {
         if (isset($get['id']) && $get['id'] != null) {
             $validator = new Validator;
-            $validator->field('titre', $data['titre'], 'Le titre')->min(2)->max(45);
+            $validator->field('titre', $data['titre'], 'Le titre')->min(2)->max(100);
             $validator->field('synopsis', $data['synopsis']);
             $validator->field('date_sortie', $data['date_sortie'], 'Date de sortie')->validateDate($format = 'Y-m-d');
             $validator->field('duree', $data['duree'])->max(20);
