@@ -22,7 +22,7 @@ class Validator{
 
     public function required(){
         if (empty($this->value)){
-            $this->errors[$this->key]='$this->name est requis.';
+            $this->errors[$this->key]="$this->name est requis.";
         }
         return $this;
     }
@@ -43,10 +43,17 @@ class Validator{
     public function validateDate($format = 'Y-m-d' ) {
         $date = \DateTime::createFromFormat($format, $this->value);
         if (!$date || $date->format($format) !== $this->value) {
-            $this->errors[$this->key]="Format $this->name invalide. S'il vous plait, utiliser le format $format.";
+            $this->errors[$this->key]="$this->name invalide. S'il vous plait, utiliser le format $format.";
         }
         return $this; 
     }
+
+    // public function number() {
+    //     if (!empty($this->value) && !is_numeric($this->value)) {
+    //         $this->errors[$this->key]="$this->name must be a number.";
+    //     }
+    //     return $this;
+    // }
 
     public function isSuccess(){
         if(empty($this->errors)) return true;
