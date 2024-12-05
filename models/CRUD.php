@@ -21,7 +21,7 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
-    public function selectId($value)
+    final public function selectId($value)
     {
         $sql = "SELECT * FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
         $stmt = $this->prepare($sql);
@@ -34,7 +34,7 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
-    public function insert($data)
+    final public function insert($data)
     {
         $data_keys = array_fill_keys($this->fillable, '');
         $data = array_intersect_key($data, $data_keys);
@@ -51,6 +51,7 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
+
     final public function update($data, $id)
     {
 
