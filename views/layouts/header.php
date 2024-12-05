@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tableau de bord</title>
-    <link rel="stylesheet" href="{{asset}}css/style.css">
+    <link rel="stylesheet" href="{{asset}}css/main.css">
+
 </head>
 
 <body>
@@ -19,29 +20,27 @@
             </form>
             <a href="#">Connexion</a>
             <a href="#">Déconnexion</a>
-        </div> 
+        </div>
 
     </nav>
-    <div id="container">
+    <div id="region-container">
         <nav class="side-nav">
             <ul>
                 <li><a href="{{base}}/home">Tableau de bord</a></li>
 
                 <li class="menu-deroulant"><a href="#">Tables ▿</a>
                     <ul>
-                        <li><a href="">Cinema</a></li>
-                        <li><a href="">Salles</a></li>
                         <li><a href="{{base}}/film">Films</a></li>
                         <li><a href="">Genres</a></li>
                         <li><a href="">Acteurs</a></li>
                         <li><a href="">Réalisateurs</a></li>
                     </ul>
-                </li>               
-            </ul> 
-        <ul> 
-        <li><a href="">Profil</a></li>
+                </li>
+            </ul>
+            <ul>
+                <li><a href="">Profil</a></li>
                 <li><a href="">Connexion</a></li>
                 <li><a href="">Déconnexion</a></li>
-    </ul>
+            </ul>
         </nav>
         <main>

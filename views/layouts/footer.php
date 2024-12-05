@@ -1,7 +1,7 @@
 </main>
     </div>
     <footer>
-        <p>Copyright</p>
+        <p>Copyright - Sylviane Paré</p>
     </footer>
 </body>
 </html>
