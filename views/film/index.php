@@ -20,7 +20,7 @@
         <td>{{film.duree}}</td>
         <td>
             {% for genre in genres %}
-                {% if genre.id == film.Genre_id %}
+                {% if genre.id == film.genre_id %}
                     {{genre.nom}}
                 {% endif %}
             {% endfor %}
