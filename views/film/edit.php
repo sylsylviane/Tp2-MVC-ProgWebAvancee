@@ -2,7 +2,7 @@
 
 
     <div class="container">
-    <form method="post">
+    <form method="post" class="formulaire">
         <h2>Modifier un film</h2> 
 
 
@@ -15,7 +15,7 @@
 
 
         <label>Synopsis
-            <input type="text" name="synopsis" value="{{ inputs.synopsis }}">
+            <textarea name="synopsis" rows="20">{{ inputs.synopsis }}</textarea>
         </label>
         {% if errors.synopsis is defined %}
         <span class="error">{{ errors.synopsis }}</span>
