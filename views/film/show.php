@@ -13,11 +13,13 @@
     <p><strong>Synopsis: </strong>{{ film.synopsis }}</p>
     <p><strong>Date de sortie: </strong>{{ film.date_sortie }}</p>
     <p><strong>Durée: </strong>{{ film.duree }}</p>
-    <a href="{{ base }}/film/edit?id={{film.id}}" class="btn block">Edit</a>
+    <div class="flex">
+        <a href="{{ base }}/film/edit?id={{film.id}}" class="btn block">Modifier</a>
     <form action="{{ base }}/film/delete" method="post">
         <input type="hidden" name="id" value="{{ film.id }}">
-        <button type="submit" class="btn block red">Delete</button>
+        <button type="submit" class="btn btn_red">Supprimer</button>
     </form>
+    </div>
 </div>
 
 {{include('layouts/footer.php')}}
