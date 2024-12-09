@@ -8,8 +8,9 @@ use App\Models\Genre;
 use App\Providers\Validator;
 
 class FilmController
-{ 
-    public function indexHome(){
+{
+    public function indexHome()
+    {
         $film = new Film;
         $films = $film->getFiveNewest('titre');
         $genre = new Genre;
