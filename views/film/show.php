@@ -15,10 +15,11 @@
     <p><strong>Durée: </strong>{{ film.duree }}</p>
     <div class="flex">
         <a href="{{ base }}/film/edit?id={{film.id}}" class="btn block">Modifier</a>
-    <form action="{{ base }}/film/delete" method="post">
-        <input type="hidden" name="id" value="{{ film.id }}">
-        <button type="submit" class="btn btn_red">Supprimer</button>
-    </form>
+        <form action="{{ base }}/film/delete" method="post">
+            <input type="hidden" name="id" value="{{ film.id }}">
+            <button type="submit" class="btn btn_red">Supprimer</button>
+            <a href="{{base}}/film" class="btn retour">Retour</a>
+        </form>
     </div>
 </div>
 

@@ -31,9 +31,9 @@
                 <li class="menu-deroulant"><a href="#">Tables ▿</a>
                     <ul>
                         <li><a href="{{base}}/film">Films</a></li>
-                        <li><a href="">Genres</a></li>
-                        <li><a href="">Acteurs</a></li>
-                        <li><a href="">Réalisateurs</a></li>
+                        <li><a href="{{base}}/genre">Genres</a></li>
+                        <li><a href="{{base}}/acteur">Acteurs</a></li>
+                        <li><a href="{{base}}/realisateur">Réalisateurs</a></li>
                     </ul>
                 </li>
             </ul>
