@@ -6,12 +6,24 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
+    border-bottom: 5px solid var(--vert);
 }
-.nav-top a{
+
+.nav-top > a {
+    font-size: 1.75em;
+    color: inherit;
+}
+
+.nav-top > div > a{
     color: inherit;
     padding: 1em;
     text-transform: uppercase;
-}
+
+    &:hover{
+        color: var(--vert);
+    }
+} 
+
 .nav-top div{
     display: flex;
     align-items: center;

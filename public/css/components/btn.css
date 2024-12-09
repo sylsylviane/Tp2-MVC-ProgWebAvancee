@@ -11,9 +11,24 @@
         font-size: inherit;
         border: 2px outset var(--blanc);
         min-width: fit-content;
+
+        &:hover{
+            background-color: #83ad5e;
+        }
 	}
 
 .btn_red{
     background-color: var(--rouge);
     color: var(--blanc);
+
+    &:hover {
+        background-color: #bb2414;
+    }
+}
+.btn.retour{
+    background-color: var(--gris-pale);
+    
+    &:hover{
+        background-color: var(--vert);
+    }
 }
