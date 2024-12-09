@@ -21,7 +21,7 @@ abstract class CRUD extends \PDO
             return false;
         }
     }
-    
+
     final public function selectId($value)
     {
         $sql = "SELECT * FROM $this->table WHERE $this->primaryKey = :$this->primaryKey";
